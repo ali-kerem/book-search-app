@@ -7,6 +7,7 @@ local.properties
 
 # Log/OS Files
 *.log
+.DS_Store
 
 # Android Studio generated files and folders
 captures/
@@ -15,12 +16,18 @@ captures/
 *.apk
 output.json
 
-# IntelliJ
+# IntelliJ/Android Studio
 *.iml
 .idea/
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
+navEditor.xml
+assetWizardSettings.xml
+workspace.xml
+caches/
+libraries/
+modules.xml
 
 # Keystore files
 *.jks
@@ -31,3 +38,7 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Build directories
+/build
+
