@@ -32,7 +32,6 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
-
 @BindingAdapter("bookTitle")
 fun bindBookTitle(textView: TextView, title: String?) {
     textView.text = when {
@@ -40,7 +39,6 @@ fun bindBookTitle(textView: TextView, title: String?) {
         else -> title
     }
 }
-
 
 @BindingAdapter("apiStatus")
 fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {

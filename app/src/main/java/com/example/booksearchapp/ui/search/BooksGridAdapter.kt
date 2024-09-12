@@ -14,8 +14,6 @@ class BooksGridAdapter( val onClickListener: OnClickListener ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
             binding.book = book
-            // This is important, because it forces the data binding to execute immediately,
-            // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
         }
     }

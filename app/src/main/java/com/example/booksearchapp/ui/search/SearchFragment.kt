@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.booksearchapp.databinding.FragmentSearchBinding
 import com.example.booksearchapp.data.DefaultBooksRepository
 import com.example.booksearchapp.network.BooksApiService
@@ -34,7 +32,6 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Create dependencies manually
         val apiService = Retrofit.Builder()
             .baseUrl(BooksApiService.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -43,12 +40,12 @@ class SearchFragment : Fragment() {
         
         val repository = DefaultBooksRepository(apiService)
         
-        // Create ViewModel using a custom ViewModelFactory
         val factory = SearchViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
         /*
         binding.booksRecyclerView.adapter = BooksGridAdapter(BooksGridAdapter.OnClickListener {
             viewModel.getBookDetails(it.id)
@@ -64,8 +61,6 @@ class SearchFragment : Fragment() {
             viewModel.updateSearchQuery(query)
             viewModel.searchBooks()
         }
-
-
     }
 
     override fun onDestroyView() {
