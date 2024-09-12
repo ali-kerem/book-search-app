@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.booksearchapp.data.BooksRepository
 import com.example.booksearchapp.model.Book
 import kotlinx.coroutines.launch
-import androidx.lifecycle.ViewModelProvider
 
 enum class ApiStatus { LOADING, ERROR, DONE }
 
@@ -44,15 +43,5 @@ class SearchViewModel(private val repository: BooksRepository) : ViewModel() {
     fun getBookDetails(bookId: String) = viewModelScope.launch {
         val book = repository.getBook(bookId)
         _selectedBook.value = book
-    }
-}
-
-class SearchViewModelFactory(private val repository: BooksRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return SearchViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
