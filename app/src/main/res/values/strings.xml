@@ -3,4 +3,5 @@
     <string name="search_button_text">Search</string>
     <string name="bookmarks_button_text">Bookmarks</string>
     <string name="home_title">Book Search App</string>
+    <string name="no_title_available">No title\n</string>
 </resources>

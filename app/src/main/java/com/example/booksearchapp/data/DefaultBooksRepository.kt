@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.booksearchapp.model.Book
 import com.example.booksearchapp.network.BooksApiService
 
-class DefaultBookshelfRepository(
+class DefaultBooksRepository(
     private val bookshelfApiService: BooksApiService
 ) : BooksRepository {
     override suspend fun getBooks(query: String): List<Book>? {
