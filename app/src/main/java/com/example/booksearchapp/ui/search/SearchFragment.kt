@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.booksearchapp.databinding.FragmentSearchBinding
 import com.example.booksearchapp.data.DefaultBooksRepository
 import com.example.booksearchapp.network.BooksApiService
@@ -46,12 +49,6 @@ class SearchFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        /*
-        binding.booksRecyclerView.adapter = BooksGridAdapter(BooksGridAdapter.OnClickListener {
-            viewModel.getBookDetails(it.id)
-        })
-         */
-
         binding.booksRecyclerView.adapter = BooksGridAdapter(BooksGridAdapter.OnClickListener {
             viewModel.getBookDetails(it.id)
         })
@@ -61,6 +58,23 @@ class SearchFragment : Fragment() {
             viewModel.updateSearchQuery(query)
             viewModel.searchBooks()
         }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            errorMessage?.let {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+        viewModel.selectedBook.observe(viewLifecycleOwner, Observer {
+            if ( null != it ) {
+                // Must find the NavController from the Fragment
+                this.findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToDetailFragment(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.displayBookDetailsComplete()
+            }
+        })
+
     }
 
     override fun onDestroyView() {

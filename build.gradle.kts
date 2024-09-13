@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     id("com.google.dagger.hilt.android") version "2.44" apply false
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.20"
+    id("androidx.navigation.safeargs") version "2.5.3" apply false
 }

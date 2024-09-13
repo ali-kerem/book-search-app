@@ -40,8 +40,23 @@ class SearchViewModel(private val repository: BooksRepository) : ViewModel() {
         }
     }
 
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
+
     fun getBookDetails(bookId: String) = viewModelScope.launch {
         val book = repository.getBook(bookId)
+        if (book != null) {
+            _selectedBook.value = book
+        } else {
+            _errorMessage.value = "Couldn't fetch book details"
+        }
+    }
+
+    fun displayBookDetails(book: Book) {
         _selectedBook.value = book
+    }
+
+    fun displayBookDetailsComplete() {
+        _selectedBook.value = null
     }
 }
