@@ -78,8 +78,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.1")
 
     // Add Hilt dependencies
     implementation("com.google.dagger:hilt-android:2.44")
@@ -95,9 +95,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 }
 
 // Allow references to generated code

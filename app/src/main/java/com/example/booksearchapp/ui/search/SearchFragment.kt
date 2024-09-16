@@ -35,6 +35,8 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().title = "Search Books"
+
         val apiService = Retrofit.Builder()
             .baseUrl(BooksApiService.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -68,9 +70,7 @@ class SearchFragment : Fragment() {
 
         viewModel.selectedBook.observe(viewLifecycleOwner, Observer {
             if ( null != it ) {
-                // Must find the NavController from the Fragment
                 this.findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToDetailFragment(it))
-                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
                 viewModel.displayBookDetailsComplete()
             }
         })

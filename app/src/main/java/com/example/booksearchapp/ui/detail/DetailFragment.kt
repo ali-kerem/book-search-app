@@ -27,6 +27,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().title = "Book Details"
 
         val application = requireNotNull(activity).application
         val book = args.selectedBook
