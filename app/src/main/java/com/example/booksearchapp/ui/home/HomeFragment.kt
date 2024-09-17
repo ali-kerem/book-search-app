@@ -31,11 +31,9 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
 
-        /*
         binding.bookmarksButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_bookmarksFragment)
+    findNavController().navigate(R.id.action_homeFragment_to_bookmarksFragment)
         }
-        */
     }
 
     override fun onDestroyView() {

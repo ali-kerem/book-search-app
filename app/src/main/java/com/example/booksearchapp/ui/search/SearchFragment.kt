@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.booksearchapp.databinding.FragmentSearchBinding
 import com.example.booksearchapp.data.DefaultBooksRepository
+import com.example.booksearchapp.data.ServiceLocator
 import com.example.booksearchapp.network.BooksApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,7 +29,6 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -37,14 +37,10 @@ class SearchFragment : Fragment() {
 
         requireActivity().title = "Search Books"
 
-        val apiService = Retrofit.Builder()
-            .baseUrl(BooksApiService.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(BooksApiService::class.java)
-        
-        val repository = DefaultBooksRepository(apiService)
-        
+        // Use the singleton repository
+        val repository = ServiceLocator.repository
+
+        // Initialize the ViewModel using the singleton repository
         val factory = SearchViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory)[SearchViewModel::class.java]
 
@@ -54,7 +50,7 @@ class SearchFragment : Fragment() {
         binding.booksRecyclerView.adapter = BooksGridAdapter(BooksGridAdapter.OnClickListener {
             viewModel.getBookDetails(it.id)
         })
-    
+
         binding.searchButton.setOnClickListener {
             val query = binding.searchEditText.text.toString()
             viewModel.updateSearchQuery(query)
@@ -67,14 +63,12 @@ class SearchFragment : Fragment() {
             }
         }
 
-
         viewModel.selectedBook.observe(viewLifecycleOwner, Observer {
-            if ( null != it ) {
+            it?.let {
                 this.findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToDetailFragment(it))
                 viewModel.displayBookDetailsComplete()
             }
         })
-
     }
 
     override fun onDestroyView() {

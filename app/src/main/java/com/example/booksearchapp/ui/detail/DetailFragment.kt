@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.booksearchapp.data.ServiceLocator
 import com.example.booksearchapp.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
@@ -31,12 +32,25 @@ class DetailFragment : Fragment() {
 
         val application = requireNotNull(activity).application
         val book = args.selectedBook
-        val viewModelFactory = DetailViewModelFactory(book, application)
+        val repository = ServiceLocator.repository
+        val viewModelFactory = DetailViewModelFactory(book, application, repository)
 
         viewModel = ViewModelProvider(this, viewModelFactory)[DetailViewModel::class.java]
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+        setupBookmarkButton()
+    }
+
+    private fun setupBookmarkButton() {
+        binding.bookmarkButton.setOnClickListener {
+            viewModel.toggleBookmark()
+        }
+
+        viewModel.bookmarkStatus.observe(viewLifecycleOwner) { isBookmarked ->
+            binding.bookmarkButton.text = if (isBookmarked) "Remove Bookmark" else "Add Bookmark"
+        }
     }
 
     override fun onDestroyView() {

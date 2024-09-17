@@ -17,7 +17,7 @@ data class VolumeInfoEntity(
     val subtitle: String?,
     val description: String?,
     @Embedded(prefix = "image_") val imageLinks: ImageLinksEntity?,
-    val authors: List<String>,
+    val authors: List<String>?,
     val publisher: String?,
     val publishedDate: String?
 )

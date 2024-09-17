@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">Book SearchApp</string>
+    <string name="app_name">Book Search App</string>
+
+    <!--Fragment Titles-->
+    <string name="home_fragment_title">Home</string>
+    <string name="search_fragment_title">Search Books</string>
+    <string name="bookmarks_fragment_title">Bookmarks</string>
+    <string name="details_fragment_title">Book Details</string>
+
     <string name="search_button_text">Search</string>
     <string name="bookmarks_button_text">Bookmarks</string>
-    <string name="home_title">Book Search App</string>
     <string name="publisher_format">Publisher: %s</string>
     <string name="published_date_format">Published Date: %s</string>
     <string name="no_title_available">No title available</string>
@@ -10,7 +16,7 @@
     <string name="no_description_available">No description available</string>
     <string name="price_not_available">Price not available</string>
     <string name="default_image_url">https://picsum.photos/200/300</string>
-    
+
     <!-- New default values -->
     <string name="default_book_title">Sample Book Title</string>
     <string name="default_authors">John Doe, Jane Smith</string>
@@ -20,4 +26,6 @@
     <string name="default_published_date">Published Date: 2023-01-01</string>
     <string name="unknown_publisher">Unknown Publisher</string>
     <string name="unknown_date">Unknown Date</string>
+    <string name="add_bookmark">Add Bookmark</string>
+    <string name="remove_bookmark">Remove Bookmark</string>
 </resources>

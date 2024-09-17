@@ -24,12 +24,12 @@ data class VolumeInfo(
     val subtitle: String?,
     val description: String?,
     val imageLinks: ImageLinks? = null,
-    val authors: List<String>,
+    val authors: List<String>?,
     val publisher: String?,
     val publishedDate: String?,
 ) : Parcelable {
-    fun allAuthors() : String {
-        return authors.joinToString(", ")
+    fun allAuthors() : String? {
+        return authors?.joinToString(", ")
     }
 }
 
