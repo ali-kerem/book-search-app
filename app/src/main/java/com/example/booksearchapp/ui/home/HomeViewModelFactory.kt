@@ -1,14 +1,15 @@
-package com.example.booksearchapp.ui.bookmark
+package com.example.booksearchapp.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.booksearchapp.data.BooksRepository
+import com.example.booksearchapp.ui.home.HomeViewModel
 
-class BookmarksViewModelFactory(private val repository: BooksRepository) : ViewModelProvider.Factory {
+class HomeViewModelFactory(private val repository: BooksRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(BookmarksViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return BookmarksViewModel(repository) as T
+            return HomeViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

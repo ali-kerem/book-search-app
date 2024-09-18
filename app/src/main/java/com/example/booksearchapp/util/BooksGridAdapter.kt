@@ -1,4 +1,4 @@
-package com.example.booksearchapp.ui.search
+package com.example.booksearchapp.util
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

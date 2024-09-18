@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ServiceLocator.init(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         drawerLayout = binding.drawerLayout
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(binding.navView, navController)
 
-        ServiceLocator.init(this)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
