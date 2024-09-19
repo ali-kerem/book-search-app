@@ -20,20 +20,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        // Load the local.properties file
-        val localProperties = Properties()
-        val localPropertiesFile = rootProject.file("local.properties")
-        if (localPropertiesFile.exists()) {
-            localPropertiesFile.inputStream().use { localProperties.load(it) }
-        }
-
-        // Inject the API key into BuildConfig
-        buildConfigField(
-            "String",
-            "GOOGLE_BOOKS_API_KEY",
-            "\"${localProperties["googleBooksApiKey"] ?: ""}\""
-        )
     }
 
     buildTypes {

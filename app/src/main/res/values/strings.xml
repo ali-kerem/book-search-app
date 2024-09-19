@@ -3,29 +3,33 @@
 
     <!--Fragment Titles-->
     <string name="home_fragment_title">Home</string>
-    <string name="search_fragment_title">Search Books</string>
-    <string name="bookmarks_fragment_title">Bookmarks</string>
+    <string name="search_fragment_title">Search</string>
+    <string name="bookmark_fragment_title">Bookmarks</string>
     <string name="details_fragment_title">Book Details</string>
 
     <string name="search_button_text">Search</string>
     <string name="bookmarks_button_text">Bookmarks</string>
+    
+    <!-- Book details formats -->
     <string name="publisher_format">Publisher: %s</string>
     <string name="published_date_format">Published Date: %s</string>
-    <string name="no_title_available">No title available</string>
-    <string name="no_authors_available">No authors available</string>
-    <string name="no_description_available">No description available</string>
-    <string name="price_not_available">Price not available</string>
-    <string name="default_image_url">https://picsum.photos/200/300</string>
 
-    <!-- New default values -->
+    <!-- N/A values -->
+    <string name="title_not_available">No title available</string>
+    <string name="authors_not_available">No authors available</string>
+    <string name="description_not_available">No description available</string>
+    <string name="price_not_available">No price available</string>
+    <string name="publisher_not_available">N/A</string>
+    <string name="date_not_available">N/A</string>
+
+    <!-- Default values for preview -->
     <string name="default_book_title">Sample Book Title</string>
     <string name="default_authors">John Doe, Jane Smith</string>
     <string name="default_description">This is a sample book description. It provides a brief overview of what the book is about.</string>
-    <string name="default_price">$9.99</string>
+    <string name="default_price">P$9.99</string>
     <string name="default_publisher">Publisher: Sample Publishing House</string>
     <string name="default_published_date">Published Date: 2023-01-01</string>
-    <string name="unknown_publisher">Unknown Publisher</string>
-    <string name="unknown_date">Unknown Date</string>
+
     <string name="add_bookmark">Add Bookmark</string>
     <string name="remove_bookmark">Remove Bookmark</string>
 </resources>

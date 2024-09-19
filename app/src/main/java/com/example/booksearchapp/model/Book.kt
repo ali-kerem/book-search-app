@@ -10,11 +10,10 @@ data class Book(
     val volumeInfo: VolumeInfo,
     val saleInfo: SaleInfo
 ) : Parcelable {
-    fun getPrice() : String? {
-        if (saleInfo.listPrice == null) {
-            return null
+    fun getPrice(): String? {
+        return saleInfo.listPrice?.let { listPrice ->
+            "${listPrice.amount} ${listPrice.currency ?: "TRY"}"
         }
-        return "${saleInfo.listPrice.amount} ${saleInfo.listPrice.currency}"
     }
 }
 
@@ -55,5 +54,5 @@ data class SaleInfo(
 @Parcelize
 data class ListPrice(
     val amount: Float?,
-    val currency: String? = "TRY"
+    val currency: String?
 ) : Parcelable

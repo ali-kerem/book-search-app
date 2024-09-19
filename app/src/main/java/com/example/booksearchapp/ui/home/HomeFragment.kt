@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.booksearchapp.R
 import com.example.booksearchapp.data.ServiceLocator
 import com.example.booksearchapp.databinding.FragmentHomeBinding
 import com.example.booksearchapp.util.BooksGridAdapter
@@ -74,6 +74,11 @@ class HomeFragment : Fragment() {
                 handleBackPress()
             }
         })
+
+        viewModel.isSearchMode.observe(viewLifecycleOwner) { isSearchMode ->
+            updateActionBarTitle(isSearchMode)
+        }
+        
     }
 
     private fun handleBackPress() {
@@ -102,4 +107,22 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.isSearchMode.value != true) {
+            viewModel.loadBookmarks()
+        }
+    }
+
+    private fun updateActionBarTitle(isSearchMode: Boolean) {
+        val activity = requireActivity() as AppCompatActivity
+        activity.supportActionBar?.title = if (isSearchMode) {
+            getString(R.string.search_fragment_title)
+        } else {
+            getString(R.string.bookmark_fragment_title)
+        }
+    }
+
+
 }

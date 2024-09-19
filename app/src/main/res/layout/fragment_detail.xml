@@ -22,15 +22,16 @@
 
             <ImageView
                 android:id="@+id/book_cover_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="center"
-                app:imageUrl="@{viewModel.selectedBook.volumeInfo.imageLinks.thumbnail ?? @string/default_image_url}"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{viewModel.selectedBook.volumeInfo.imageLinks.thumbnail}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_book_placeholder"
                 tools:src="@tools:sample/backgrounds/scenic" />
-
+                
             <TextView
                 android:id="@+id/book_title"
                 android:layout_width="0dp"
@@ -38,7 +39,7 @@
                 android:layout_marginTop="16dp"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:text="@{viewModel.selectedBook.volumeInfo.title ?? @string/no_title_available}"
+                android:text="@{viewModel.selectedBook.volumeInfo.title ?? @string/title_not_available}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/book_cover_image"
@@ -51,11 +52,11 @@
                 android:layout_marginTop="8dp"
                 android:textSize="16sp"
                 android:textColor="#757575"
-                android:text="@{viewModel.selectedBook.volumeInfo.allAuthors() ?? @string/no_authors_available}"
+                android:text="@{viewModel.selectedBook.volumeInfo.allAuthors() ?? @string/authors_not_available}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/book_title"
-                tools:text="@string/default_authors" />
+                tools:text="string/default_authors" />
 
             <!-- Divider Line -->
             <View
@@ -87,7 +88,7 @@
                 android:layout_marginTop="16dp"
                 android:textSize="16sp"
                 android:lineSpacingExtra="4dp"
-                android:text="@{viewModel.selectedBook.description ?? @string/no_description_available}"
+                android:text="@{viewModel.selectedBook.volumeInfo.description ?? @string/description_not_available}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/book_price"
@@ -110,7 +111,7 @@
                 android:layout_marginTop="16dp"
                 android:textColor="#757575"
                 android:textSize="14sp"
-                android:text="@{@string/publisher_format(viewModel.selectedBook.volumeInfo.publisher ?? @string/unknown_publisher)}"
+                android:text="@{@string/publisher_format(viewModel.selectedBook.volumeInfo.publisher ?? @string/publisher_not_available)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/book_description"
@@ -121,7 +122,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{@string/published_date_format(viewModel.selectedBook.volumeInfo.publishedDate ?? @string/unknown_date)}"
+                android:text="@{@string/published_date_format(viewModel.selectedBook.volumeInfo.publishedDate ?? @string/date_not_available)}"
                 android:textColor="#757575"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"

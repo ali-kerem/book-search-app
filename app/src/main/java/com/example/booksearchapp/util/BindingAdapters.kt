@@ -32,7 +32,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .load(imgUri)
             .apply(RequestOptions()
                 .placeholder(R.drawable.loading_animation)
-                .error(R.drawable.ic_broken_image))
+                .error(R.drawable.ic_book_placeholder))
             .into(imgView)
     }
 }
@@ -40,7 +40,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 @BindingAdapter("bookTitle")
 fun bindBookTitle(textView: TextView, title: String?) {
     textView.text = when {
-        title.isNullOrEmpty() -> textView.context.getString(R.string.no_title_available)
+        title.isNullOrEmpty() -> textView.context.getString(R.string.title_not_available)
         else -> title
     }
 }
